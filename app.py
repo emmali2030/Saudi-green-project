@@ -43,7 +43,7 @@ def b64(fp):
         return base64.b64encode(f.read()).decode()
 
 # مسار اللوجو الجديد
-new_logo_path = r"assets\KSA.png"
+new_logo_path = "assets/KSA.png"
 new_logo_base64 = b64(new_logo_path)  # تحويل اللوجو إلى base64
 
 @st.cache_data(show_spinner=False)
