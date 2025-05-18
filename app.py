@@ -487,7 +487,7 @@ m.fit_bounds([[bounds[0][1], bounds[0][0]], [bounds[2][1], bounds[2][0]]])
 m.addLayer(ndvi_img, vis, "NDVI", True)
 
 # ← إضافة مؤشر اتجاه الشمال على الخريطة الأساسية
-north_icon_path = r"assets\NORTH.png"
+north_icon_path = "assets/NORTH.png"
 encoded_arrow = _b64(north_icon_path)
 
 north_html = f'''
