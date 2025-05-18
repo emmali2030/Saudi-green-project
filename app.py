@@ -16,12 +16,12 @@ import plotly.express as px
 import os
 from google.oauth2 import service_account
 
-# تهيئة الاتصال بـ Earth Engine باستخدام بيانات الاعتماد من Secrets
+# تحميل بيانات الاعتماد من Streamlit Secrets
 credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["service-account"]  # تأكد من استخدام الاسم الصحيح هنا
+    st.secrets["service-account"]
 )
 
-# تهيئة Earth Engine
+# تهيئة Earth Engine باستخدام بيانات الاعتماد
 ee.Initialize(credentials=credentials, project="streamlit-ndvi-project-459419")
 
 # ───────── الأصول الثابتة ─────────
