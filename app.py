@@ -16,9 +16,9 @@ import plotly.express as px
 import os
 from google.oauth2 import service_account
 
-# تحميل بيانات الاعتماد من Streamlit Secrets
 credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["service-account"]
+    st.secrets["service-account"],
+    scopes=["https://www.googleapis.com/auth/earthengine.readonly"]
 )
 
 # تهيئة Earth Engine باستخدام بيانات الاعتماد
