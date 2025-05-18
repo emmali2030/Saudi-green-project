@@ -38,7 +38,7 @@ def b64(fp):
         return base64.b64encode(f.read()).decode()
 
 # مسار اللوجو الجديد
-new_logo_path = r"C:\saudi-green-project\assets\KSA.png"
+new_logo_path = r"assets\KSA.png"
 new_logo_base64 = b64(new_logo_path)  # تحويل اللوجو إلى base64
 
 @st.cache_data(show_spinner=False)
@@ -312,8 +312,8 @@ custom_css = """
 """
 
 st.set_page_config("السعودية الخضراء", layout="wide", page_icon="🌿",)
-logo = _b64(r"C:\Project\saudi-green-project\assets\LOGO.png")
-gif_path = r"C:\Project\saudi-green-project\assets\ndvi_header_banner.gif"
+logo = _b64(r"assets\LOGO.png")
+gif_path = r"assets\ndvi_header_banner.gif"
 gif_bytes = open(gif_path, "rb").read()
 gif_data_url = f"data:image/gif;base64,{base64.b64encode(gif_bytes).decode()}"
 st.markdown(custom_css + f"""
@@ -482,7 +482,7 @@ m.fit_bounds([[bounds[0][1], bounds[0][0]], [bounds[2][1], bounds[2][0]]])
 m.addLayer(ndvi_img, vis, "NDVI", True)
 
 # ← إضافة مؤشر اتجاه الشمال على الخريطة الأساسية
-north_icon_path = r"C:\Project\saudi-green-project\assets\NORTH.png"
+north_icon_path = r"assets\NORTH.png"
 encoded_arrow = _b64(north_icon_path)
 
 north_html = f'''
@@ -820,7 +820,7 @@ with right_col:
     st.markdown('<div class="section-title">🎥 الخريطة المتحركة</div>', unsafe_allow_html=True)
 
     # مسار مجلد الـ GIF المحلي
-    gif_folder_path = r"C:\Project\saudi-green-project\assets\GIF"
+    gif_folder_path = r"assets\GIF"
 
     # تحديد ملفات الـ GIF الخاصة بكل منطقة
     gif_files = {
