@@ -318,7 +318,7 @@ custom_css = """
 
 st.set_page_config("السعودية الخضراء", layout="wide", page_icon="🌿",)
 logo = _b64("assets/LOGO.png")
-gif_path = r"assets\ndvi_header_banner.gif"
+gif_path = "assets/ndvi_header_banner.gif"
 gif_bytes = open(gif_path, "rb").read()
 gif_data_url = f"data:image/gif;base64,{base64.b64encode(gif_bytes).decode()}"
 st.markdown(custom_css + f"""
