@@ -704,12 +704,11 @@ with right_col:
         st.warning("⚠️ لا يمكن عرض خريطة التغيرات لأن المدينة المختارة ليس لها بيانات كافية أو غير موجودة.")
     else:
         with st.spinner("⏳ جاري إعداد خريطة المقارنة..."):
-        # حساب الفترات الزمنية
-# أول 16 يوم من الفترة
-        ndvi_start, scale_start = ndvi_image(cid, start, start + timedelta(days=16), focus_geom)
+            ndvi_start, scale_start = ndvi_image(cid, start, start + timedelta(days=16), focus_geom)
+            ndvi_end, scale_end = ndvi_image(cid, end - timedelta(days=16), end, focus_geom)
+    
+            # باقي كود خريطة المقارنة هنا...
 
-# آخر 16 يوم من الفترة
-        ndvi_end, scale_end = ndvi_image(cid, end - timedelta(days=16), end, focus_geom)
 
     
         # احسب الإحداثيات المناسبة من focus_geom
