@@ -823,18 +823,21 @@ with right_col:
 
 
     st.markdown('<div class="section-title">🎥 الخريطة المتحركة</div>', unsafe_allow_html=True)
-
-    # مسار مجلد الـ GIF المحلي
-    gif_folder_path = r"assets\GIF"
-
-    # تحديد ملفات الـ GIF الخاصة بكل منطقة
+    
+    # 🔧 المسار الصحيح لمجلد GIF (باستخدام os.path)
+    gif_folder_path = os.path.join("assets", "GIF")
+    
+    # 🧼 تنظيف اسم المنطقة من أي مسافات
+    region_clean = region.strip()
+    
+    # ✅ القاموس الكامل مع الاسم الصحيح المتطابق مع selectbox
     gif_files = {
         "الرياض": os.path.join(gif_folder_path, "الرياض_final.gif"),
         "مكة المكرمة": os.path.join(gif_folder_path, "مكة المكرمة_final.gif"),
         "عسير": os.path.join(gif_folder_path, "عسير_final.gif"),
         "تبوك": os.path.join(gif_folder_path, "تبوك_final.gif"),
         "المدينة": os.path.join(gif_folder_path, "المدينة_final.gif"),
-        "السعودية كاملة": os.path.join(gif_folder_path, "السعودية_final.gif"),
+        "المملكة العربية السعودية": os.path.join(gif_folder_path, "السعودية_final.gif"),  # ✅ الاسم الصحيح
         "المنطقة الشرقية": os.path.join(gif_folder_path, "المنطقة الشرقية_final.gif"),
         "الحدود الشمالية": os.path.join(gif_folder_path, "الحدود الشمالية_final.gif"),
         "القصيم": os.path.join(gif_folder_path, "القصيم_final.gif"),        
@@ -844,16 +847,16 @@ with right_col:
         "جازان": os.path.join(gif_folder_path, "جازان_final.gif"),
         "نجران": os.path.join(gif_folder_path, "نجران_final.gif"),
     }
-
-    # تحديد الـ GIF الذي سيتم اختياره بناءً على المنطقة
-    selected_gif_path = gif_files.get(region, os.path.join(gif_folder_path, "السعودية_final.gif"))
-
-    # التأكد من أن الملف موجود
+    
+    # ✅ تحديد الملف المطلوب
+    selected_gif_path = gif_files.get(region_clean, gif_files["المملكة العربية السعودية"])
+    
+    # ✅ التحقق من وجود الملف وعرضه
     if os.path.exists(selected_gif_path):
-        gif_base64 = _b64(selected_gif_path)  # تحويل الـ GIF إلى base64
+        gif_base64 = _b64(selected_gif_path)
         st.image(f"data:image/gif;base64,{gif_base64}", use_container_width=True)
     else:
-        st.error("الملف غير موجود في المسار المحدد!")
+        st.error(f"❌ الملف غير موجود في المسار: {selected_gif_path}")
 
 
 # ───────── إضافة التفاصيل في أسفل الصفحة ─────────
