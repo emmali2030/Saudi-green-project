@@ -14,10 +14,15 @@ from folium.plugins import MiniMap
 from datetime import datetime, date, timedelta
 import plotly.express as px
 import os
+from google.oauth2 import service_account
 
+# تهيئة الاتصال بـ Earth Engine باستخدام بيانات الاعتماد من Secrets
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["service-account"]  # تأكد من استخدام الاسم الصحيح هنا
+)
 
-warnings.filterwarnings("ignore", category=DeprecationWarning)
-ee.Initialize(project="streamlit-ndvi-project-459419")
+# تهيئة Earth Engine
+ee.Initialize(credentials=credentials, project="streamlit-ndvi-project-459419")
 
 # ───────── الأصول الثابتة ─────────
 KSA_ASSET = ee.FeatureCollection("projects/streamlit-ndvi-project-459419/assets/SAUDI")
